@@ -46,7 +46,7 @@ class Person {
     (this.name = name), this.stomach = [], (this.age = age);
   }
   eat(food) {
-    if (this.stomach.length <= 10){
+    if (this.stomach.length < 11){
       return this.stomach.push(food);
     }
   }
@@ -138,8 +138,8 @@ class Instructor extends Lambdasian {
   demo(subject){
     return `Today we are learning about ${this.subject};`
   }
-  grade(){
-
+  grade(student, subject){
+    return `${this.name} receives a perfect score on ${this.subject}`;
   }
 }
 
@@ -158,7 +158,26 @@ class Instructor extends Lambdasian {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {}
+class Student extends Lambdasian {
+  constructor(attributes){
+    super(attributes);
+    this.previousBackground = 'Plumber',
+    this.className = 'WebEU 3',
+    this.favSubjects = 'JS, Node, Redux',
+    this.subject = 'sql'
+  }
+  listSubjects(){
+    return this.favSubjects;
+  }
+
+  PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${this.subject}`;
+  }
+
+  sprintChallenge(){
+    return `${this.name} has begun sprint challenge on ${this.subject}`;
+  }
+}
 
 /*
   TASK 6
@@ -173,7 +192,25 @@ class Student {}
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {}
+class ProjectManager extends Instructor{
+  constructor(attributes){
+    super(attributes);
+    this.gradClassName = 'Web25',
+    this.favInstructor = 'Luis',
+    this.channel = 'eu3',
+    this.specialty = 'Node',
+    this.favLanguage = 'JavaScript',
+    this.catchPhrase= "Keep doing what you're doing!"
+  }
+
+  standUp(){
+    return `${this.name} announces to ${this.channel}, @channel standy times!`;
+  }
+
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${this.subject}`;
+  }
+}
 
 /*
   STRETCH PROBLEM (no tests!)
