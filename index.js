@@ -86,7 +86,16 @@ class Car {
   }
 
   drive(distance) {
-    return `I ran out of fuel at ${this.odometer}`;
+    if(distance > 0){
+      this.odometer = 50;
+    }
+    if(distance > 0){
+      this.tank = 5;
+    }
+    if(this.milesPerGallon = 0){
+      this.tank = 0;
+    }
+    return `I ran out of fuel at ${this.odometer }`;
   }
 }
 
@@ -139,7 +148,7 @@ class Instructor extends Lambdasian {
     return `Today we are learning about ${this.subject};`
   }
   grade(student, subject){
-    return `${this.name} receives a perfect score on ${this.subject}`;
+    return `${student.name} receives a perfect score on ${this.subject}`;
   }
 }
 
@@ -161,9 +170,9 @@ class Instructor extends Lambdasian {
 class Student extends Lambdasian {
   constructor(attributes){
     super(attributes);
-    this.previousBackground = 'Plumber',
-    this.className = 'WebEU 3',
-    this.favSubjects = 'JS, Node, Redux',
+    this.previousBackground = attributes.previousBackground,
+    this.className = attributes.className,
+    this.favSubjects = attributes.favSubjects,
     this.subject = 'sql'
   }
   listSubjects(){
